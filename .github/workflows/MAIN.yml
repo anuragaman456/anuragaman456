@@ -2,10 +2,9 @@ name: Generate Snake
 
 on:
   schedule:
-    # Every 6 hours
-    - cron: "0 */6 * * *"
+    - cron: "0 */6 * * *"  # Runs every 6 hours
 
-  workflow_dispatch:
+  workflow_dispatch:  # Allows manual trigger from the Actions tab
 
 jobs:
   build:
@@ -16,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
 
       # Generates the snake
-      - uses: Platane/snk@master
+      - uses: Platane/snk@v2.1.0
         with:
           github_user_name: anuragaman456
           gif_out_path: dist/github-contribution-grid-snake.gif
@@ -27,7 +26,7 @@ jobs:
 
       # Push the changes to the output branch
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: output
